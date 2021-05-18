@@ -28,7 +28,7 @@ ARP(地址解析协议)，在一个局域网内，主机A(IP_a,MAC_a)和主机B(
 
 采用docker-compose一键启动 `docker-compose up -d`
 
-![image-20210518184700140](https://i.loli.net/2021/05/18/hULpjMSGl73eRZt.png)
+![image-20210518184700140](/home/badmonkey/code/ctf/web/lab-arpspoof/arplab/img-1.png)
 
 打开三个终端一次进入对应的容器中
 
@@ -38,7 +38,7 @@ ARP(地址解析协议)，在一个局域网内，主机A(IP_a,MAC_a)和主机B(
 
 分别查看ip信息`ip addr`
 
-![image-20210518185008497](https://i.loli.net/2021/05/18/3Ybntz6RmsT8g7U.png)
+![image-20210518185008497](/home/badmonkey/code/ctf/web/lab-arpspoof/arplab/img-2.png)
 
 得到三个容器对应的ip例:
 
@@ -63,7 +63,7 @@ gateway == > 172.26.0.1
 
 victim容器ping tcpdumper 以建立连接，可以收到类似下面的包
 
-![image-20210518190011753](https://i.loli.net/2021/05/18/4ky7QX5jbMrOeF6.png)
+![image-20210518190011753](/home/badmonkey/code/ctf/web/lab-arpspoof/arplab/img-3.png)
 
 由于victim的arp表是空的，所以第一个请求会发起arp request请求tcpdumper的mac地址，收到arp reply后发出icmp包，同样的会更新tcpdumper中victim的mac信息。
 
@@ -77,7 +77,7 @@ victim容器ping tcpdumper 以建立连接，可以收到类似下面的包
 
 最后污染了victim的缓存表
 
-![image-20210518191319967](https://i.loli.net/2021/05/18/1asdwnq4NUihBvx.png)
+![image-20210518191319967](/home/badmonkey/code/ctf/web/lab-arpspoof/arplab/img-4.png)
 
 ## 参考链接
 
