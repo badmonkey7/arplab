@@ -1,8 +1,10 @@
 version: '3'
 services:
-    victim:
-        image: "alpine"
-        entrypoint: /bin/sh
+    sender:
+        build:
+            context: tcpdumper
+        entrypoint: /bin/bash
+#        container_name: sender
         stdin_open: true
         tty: true
         cap_add:
@@ -11,11 +13,16 @@ services:
         build: 
             context: arpspoofer
         entrypoint: /bin/bash
+#        container_name: arpspoofer
         stdin_open: true
         tty: true
-    tcpdumper:
+
+    reciver:
         build:
             context: tcpdumper
         entrypoint: /bin/bash
         stdin_open: true
         tty: true
+        cap_add:
+            - NET_ADMIN
+#        container_name: reciver

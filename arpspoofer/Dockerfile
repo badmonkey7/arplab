@@ -4,6 +4,7 @@ RUN apt-get -qq update \
     netcat\
     iproute2\
     iputils-ping\
+    net-tools \
     dsniff
 
 # CMD ["/bin/bash"]
