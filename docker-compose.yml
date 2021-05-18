@@ -1,0 +1,21 @@
+version: '3'
+services:
+    victim:
+        image: "alpine"
+        entrypoint: /bin/sh
+        stdin_open: true
+        tty: true
+        cap_add:
+            - NET_ADMIN
+    arpspoofer:
+        build: 
+            context: arpspoofer
+        entrypoint: /bin/bash
+        stdin_open: true
+        tty: true
+    tcpdumper:
+        build:
+            context: tcpdumper
+        entrypoint: /bin/bash
+        stdin_open: true
+        tty: true
